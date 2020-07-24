@@ -200,11 +200,12 @@ fi
 # Enable routing on the server
 echo "net.ipv4.ip_forward = 1
 ufw allow 1194
+ufw allow 60378
 ufw allow openSSH
 ufw disable
 ufw enable
 ufw reload
-iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o ens4 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 10.66.66.2/24 -o ens4 -j MASQUERADE
 net.ipv6.conf.all.forwarding = 1" >/etc/sysctl.d/wg.conf
 
 sysctl --system
