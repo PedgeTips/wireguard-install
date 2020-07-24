@@ -200,7 +200,6 @@ fi
 # Enable routing on the server
 echo "net.ipv4.ip_forward = 1
 ufw allow 1194
-ufw allow 60378
 ufw allow openSSH
 ufw disable
 ufw enable
