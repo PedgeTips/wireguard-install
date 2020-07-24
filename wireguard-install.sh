@@ -19,10 +19,10 @@ function addClient() {
 	read -rp "Client's WireGuard IPv6 " -e -i "$CLIENT_WG_IPV6" CLIENT_WG_IPV6
 
 	# Adguard DNS by default
-	CLIENT_DNS_1="176.103.130.130"
+	CLIENT_DNS_1="1.1.1.1"
 	read -rp "First DNS resolver to use for the client: " -e -i "$CLIENT_DNS_1" CLIENT_DNS_1
 
-	CLIENT_DNS_2="176.103.130.131"
+	CLIENT_DNS_2="1.0.0.1"
 	read -rp "Second DNS resolver to use for the client: " -e -i "$CLIENT_DNS_2" CLIENT_DNS_2
 
 	CLIENT_NAME=$(
@@ -205,7 +205,7 @@ ufw allow openSSH
 ufw disable
 ufw enable
 ufw reload
-iptables -t nat -A POSTROUTING -s 10.66.66.2/24 -o ens4 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 10.66.66.1/24 -o ens4 -j MASQUERADE
 net.ipv6.conf.all.forwarding = 1" >/etc/sysctl.d/wg.conf
 
 sysctl --system
